@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>文章详情</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/sidebar.css">
+    <link rel="stylesheet" href="/stylesheets/article.css">
+</head>
+<body>
+
+<!--顶部-->
+<% include header.ejs %>
+<!--文章内容-->
+<div class="container ck-container">
+    <!--题图-->
+    <div class="ck-img">
+        <img src="/images/article/demo-img-01.png" alt="">
+    </div>
+    <!--侧边栏-->
+    <% include sidebar.ejs %>
+    <!--文章-->
+    <div class="ck-article">
+        <h1 id="articleTitle"><%= theArticle.title %></h1>
+
+        <div class="article-date">
+            <img src="/images/article/clock.png" alt="">
+            <%
+            //var addTime = theArticle.add_time;
+            //var strAddTime = addTime.getFullYear()+'-'+(addTime.getMonth()+1)+'-'+addTime.getDate();
+            %>
+            <span id="articleTime"><%= theArticle.add_time %></span>
+
+        </div>
+        <div class="article-CmtNum">
+            <img src="/images/article/cheat.png" alt="">
+            <span><em id="count"></em>条评论</span>
+        </div>
+        <section>
+            Comparisons to product design are compelling but also frustrating for architects and landscape architects.
+            Our ‘product’ is always custom, never mass-produced; our budgets are small and shrinking; our projects are
+            large, long-lived, and difficult to prototype. But prototyping lies at the heart of iterative design
+            research: it allows designers to test their work not just against an abstracted model but with increasingly
+            realized versions of the thing itself.
+        </section>
+        <article>
+            My design ideas for the park involved emphasizing, tweaking, twisting, and extending the existing structure,
+            as well as expanding the park’s tradition of user modification, which allows for adaptation to changing
+            needs.
+        </article>
+        <div class="article-img">
+            <img id="articleImg" src="/images/index/<%= theArticle.img %>" alt="">
+        </div>
+        <div class="article-sub clearfix">
+            <!--<h2>二级标题</h2>-->
+            <section>Vivamus et mi iaculis, sagittis arcu vel, aliquam dui. Aenean tempor eget quam eu luctus. Vivamus
+                nec nulla justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                egestas. Mauris dapibus elementum pellentesque. Suspendisse potenti. Ut commodo ipsum et leo commodo
+                iaculis. Duis vitae justo nec nisi tincidunt suscipit.
+            </section>
+            <section>
+                <article id="contentArticle"><%= theArticle.contents %></article>
+            </section>
+        </div>
+        <div class="article-summary">
+            <section>Curabitur aliquam euismod purus, vel feugiat eros fermentum mattis. Nunc ac qua est aliquet
+                pretium. Donec mollis venenatis tincidunt. Integer semper, tortor nec qua mattis euismod, est diam
+                malesuada libero, eget aliquet nisl turpis ut metus. Maecenas vitae lacus
+            </section>
+        </div>
+        <div class="article-footer">
+            <a href="#">#city</a>
+            <a href="#">#photography</a>
+            <a href="#">#lifestyle</a>
+            <a href="#">#suitstheme</a>
+
+            <button class="article-btn" name="btn-like" id="like"><span class="glyphicon glyphicon-heart"></span><span>赞(<em
+                            id="clickAmount"><%= theArticle.like_amount %></em>)</span></button>
+        </div>
+    </div>
+    <!--评论详情-->
+    <div class="ck-comment">
+        <div class="content clearfix">
+            <h3>留言板<span class="badge" style="font-size: 15px;margin-left: 10px;" id="twoCount">2</span></h3>
+
+            <div id="comment_box">
+
+            </div>
+
+            <div class="showMore"><a href="javascript:void(0);" class="comment-more">
+                    <img src="/images/common/arrow_down.png" alt="">
+                </a></div>
+        </div>
+    </div>
+    <!--发表评论-->
+    <div class="ck-message">
+        <!--给我留言-->
+        <% include write_comment.ejs %>
+    </div>
+    <!--返回顶部开始-->
+    <div class="go-top">
+        <span class="glyphicon glyphicon-chevron-up" style="font-size: 50px"></span>
+    </div>
+</div>
+
+
+<script src="/js/jquery-1.12.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/gotoTop.js"></script>
+<script src="/js/passwordAllert.js"></script>
+<script src="/js/showMore.js"></script>
+<script src="/js/fixSidebar.js"></script>
+<script>
+    var username = window.loginUser_name = "<%=loginUsers.username%>";
+    if (username && username.length > 0) {
+        $("#loginname").text(username);
+        $("#hi").text("你好!");
+    }else{
+        $("#hide").hide();
+    }
+
+    window.validUserLogin = function () {
+        return window.loginUser_name && window.loginUser_name != '' && window.loginUser_name.length > 0;
+
+    }
+    $("*[myrole=loginuser]").click(function (e) {
+        if (!window.validUserLogin()) {
+            e.stopPropagation && e.stopPropagation() || e.preventDefault && e.preventDefault();
+            $("#login").modal("show");
+        }
+    })
+    $('a[name=comments]').click(function (e) {
+        if (!window.validUserLogin()) {
+            e.stopPropagation && e.stopPropagation() || e.preventDefault && e.preventDefault();
+            $("#login").modal("show");
+
+        }
+        else {
+            $.ajax({
+                "url": "/users/giveComment",
+                "type": "post",
+                "data": {
+                    "comment": $("#words").val(),
+                    "theArticleId": "<%=theArticle.article_id%>",
+                    "theLoginName": "<%=loginUsers.username%>"
+                },
+                "dataType": "json",
+                "success": function (data) {
+                    $("#words").val('');
+                    var item = new Array();
+                    item.push('<div class="comment">');
+                    item.push('<img src="/images/demo/demo_header_01.png" >');
+                    item.push('<div class="nameAndState clearfix">');
+                    item.push('<div class="comment-new-reply"><img src="/images/common/circle_new.png"></div>');
+                    item.push('<h4>' + data.sender + '</h4>');
+                    item.push('<span class="comment-date">' + data.add_time + '</span>');
+                    item.push('<a href="#" class="comment-reply">回 复</a>');
+                    item.push('</div>');
+                    item.push('<p>' + data.content + '</p>');
+                    item.push('</div>');
+                    $("#comment_box").before(item.join(""));
+                }
+            })
+        }
+    });
+</script>
+<script>
+    var theArticleId_ = "<%=theArticle.article_id%>";
+    var theArticleLikeAmount = "<%=theArticle.like_amount%>";
+    var pageindex = 1;
+    var loadComment = function (theArticleId, pageindex) {
+        $.get('/users/selectComment', {
+            "theArticleId": theArticleId || theArticleId_,
+            "pageindex": pageindex || 0
+        }, function (data) {
+            var comments = new Array();
+            for (var i in data) {
+                var commentObj = data[i];
+                console.log(data);
+                var item = new Array();
+                item.push('<div class="comment">');
+                item.push('<img src="/images/demo/demo_header_01.png" >');
+                item.push('<div class="nameAndState clearfix">');
+                item.push('<div class="comment-new-reply"><img src="/images/common/circle_new.png"></div>');
+                item.push('<h4>');
+                item.push('<a href="/users/visitUser?userid=' + commentObj.user_id + '" >' + commentObj.sender + '</a>');
+                item.push('</h4>');
+                item.push('<span class="comment-date">' + commentObj.add_time + '</span>');
+                item.push('<a href="#" class="comment-reply">回 复</a>');
+                item.push('</div>');
+                item.push('<p>' + commentObj.content + '</p>');
+                item.push('</div>');
+
+                comments.push(item.join(""));
+            }
+            $("#comment_box").append(comments.join(""));
+
+        }, "json")
+    }
+    loadComment();
+    $(".showMore").click(function () {
+        loadComment(theArticleId_, pageindex++);
+    })
+</script>
+<script>
+    $('#like').click(function () {
+        var $this = $(this);  //获取当前对象
+        var $theArticleLikeAmount = $("#clickAmount", $this).text();
+        $.get('/users/clickLike',
+                {
+                    "theArticleId": theArticleId_
+                },
+                function (data) {
+                    console.log(data);
+                    if(data=="false")  //{
+                        alert("不能重复点赞！");
+                    else{
+                     var clickAmount = parseInt($theArticleLikeAmount || 0) + 1;
+                     $("#clickAmount", $this).text(clickAmount);}
+                })
+    })
+</script>
+<script>
+
+    $.get('/users/getCommentCount', {"theArticleId": theArticleId_}, function (data) {
+        var amount = parseInt(data[0]['count(*)']);
+        $('#count').text(amount);
+        $('#twoCount').text(amount);
+    })
+
+</script>
+<script>
+    $(document).ready(function(){
+        $("#words").focus(function(){
+            $("#words").val('');
+        });
+        $("#words").blur(function(){
+            $("#words").val('Your comments*');
+        });
+    });
+</script>
+</body>
+</html>

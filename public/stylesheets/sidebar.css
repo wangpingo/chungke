@@ -1,0 +1,67 @@
+/*侧边栏*/
+.ck-sidebar{
+    width: 193px;
+    /*background-color: white;*/
+    float: right;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 13px;
+    color: #636467;
+    padding-left: 15px;
+}
+.ck-sidebar.fixed{
+    position: fixed;
+    /*top: -50px;*/
+}
+.ck-sidebar a{
+    text-decoration: none;
+    color: #636467;
+}
+.ck-sidebar .ck-sidebar-logined div{
+    line-height: 29px;
+}
+.ck-sidebar .ck-sidebar-logined div:hover{
+    background-color: #dae2e7;
+    width: 100%;
+    height: 29px;
+}
+.ck-sidebar .ck-sidebar-common div{
+    line-height: 29px;
+}
+.ck-sidebar .ck-sidebar-common div:hover{
+    background-color: #dae2e7;
+    width: 100%;
+    height: 29px;
+}
+.ck-sidebar .ck-sidebar-movements div{
+    line-height: 29px;
+}
+.ck-sidebar .ck-sidebar-movements div:hover{
+    background-color: #dae2e7;
+    width: 100%;
+    height: 29px;
+}
+.ck-sidebar span{
+    color: #3ea9fd;
+}
+.ck-sidebar div{
+    margin-bottom: 10px;
+}
+.ck-sidebar img{
+    margin-right: 8px;
+}
+.ck-sidebar .ck-sidebar-logined,.ck-sidebar-common,.ck-sidebar-movements{
+    border-bottom: solid 2px #aaaaaa;
+}
+.ck-sidebar-copyright{
+    color: #aaaaaa;
+}
+.ck-sidebar-copyright a{
+    color: #aaaaaa;
+    font-size: 13px;
+    font-weight: 300;
+}
+.ck-sidebar-copyright small{
+    display: inline-block;
+    margin-bottom: 10px;
+}

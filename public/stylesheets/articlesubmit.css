@@ -1,0 +1,110 @@
+*{/*去除所有元素的内外边距*/
+	margin: 0;
+	padding: 0;
+
+}
+a{/*去除所有链接的下划线*/
+	text-decoration: none;
+	
+}
+ul,ol{/*去除列表的样式*/
+	list-style: none;
+}
+img{/*防止图片放置在a中时IE中会出现多余的蓝色边框*/
+	border: 0;
+}
+
+body{
+	color: black;
+	font: 12px/1.8 Tahoma,Verdana,Arial,微软雅黑;
+}
+.wrapper{
+	width: 660px;
+	height: 1000px;
+	margin: 0 auto;
+}
+
+
+/**********************articlesub-top******************************/
+#articlesub-top{
+	height: 60px;
+	width: 100%;
+}
+
+/**********************articlesub-container******************************/
+#articlesub-container{
+	top: 30px;
+	position: relative;
+}
+#articlesub-pic{
+	position: absolute;
+	width: 100%;
+	height: 190px;
+	background-color: rgb(247,248,250);
+}
+#article-pic-sub{
+	position: absolute;
+	width: 32px;
+	height: 28px;
+	background: url(../images/articlesub/articlepicsub.png);
+	left: 50%;
+	margin-left: -16px;
+	top: 81px;
+	cursor: pointer;
+}
+#articlesub-title{
+	position: absolute;
+	top: 190px;
+	height: 80px;
+	width: 100%;
+	cursor: text;
+	border: 0;
+	font-size: 38px;
+	line-height: 80px;
+	font-family: 微软雅黑 Light;
+}
+.black {
+color:#000;
+}
+.gray {
+color:#b3b3b3;
+}
+#articlesub-button{
+	position: absolute;
+	height: 35px;
+	width: 100%;
+	top: 272px;
+	background: url(../images/articlesub/articlesubbutton.png);
+}
+#articlesub-content{
+	position: absolute;
+	top: 306px;
+	width: 656px;
+	height: 400px;
+	border: 2px solid rgb(247,248,250);
+	cursor: text;
+	font-size: 16px;
+	line-height: 20px;
+	font-family: 微软雅黑 Light;
+}
+#article-submit-btn,#article-draft-btn{
+	width: 100px;
+	height: 30px;
+	font-size: 16px;
+	line-height: 20px;
+	text-align: center;
+	font-family: 微软雅黑 Light;
+	background-color: rgb(247,248,250);
+	border-radius: 5px;
+	cursor: pointer;
+}
+#article-submit-btn{
+	position: absolute;
+	top: 726px;
+}
+#article-draft-btn{
+	position: absolute;
+	top: 726px;
+	left: 150px;
+}
+/**********************subarticle-top******************************/

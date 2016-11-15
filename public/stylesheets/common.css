@@ -1,0 +1,122 @@
+nav .container-fluid{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.navbar-nav{
+    font-size: 20px;
+    /*height: 57px;*/
+    margin-top: 4px;
+}
+.navbar-nav li{
+    margin-left: 10px;
+    margin-right: 10px;
+    /*line-height: 57px;*/
+}
+.navbar-nav img{
+    margin-top: -20px;
+}
+nav .form-control{
+    background:url("../images/common/search.png")no-repeat ;
+    /*width: 175px;*/
+    height: 35px;
+    padding-left: 35px;
+    border-radius: 16px;
+    margin-top: 4px;
+}
+.register{
+    /*display: inline-block;*/
+    /*float: left;*/
+    font-size: 15px;
+}
+li:hover{
+    cursor: pointer;
+}
+.login-box {
+    width: 100%;
+    max-width:500px;
+    /*height: 400px;*/
+    position: absolute;
+    top: 50%;
+    /*margin-top: -200px;*/
+    /*设置负值，为要定位子盒子的一半高度*/
+}
+@media screen and (min-width:500px){
+    .login-box {
+        left: 55%;
+        /*设置负值，为要定位子盒子的一半宽度*/
+        margin-left: -250px;
+    }
+}
+.form {
+    width: 100%;
+    max-width:500px;
+    height: 275px;
+    margin: 25px auto 0px auto;
+    padding-top: 25px;
+}
+.login-content {
+    height: 300px;
+    width: 100%;
+    max-width:500px;
+    background-color: rgba(255, 250, 2550, .6);
+    float: left;
+}
+.input-group {
+    margin: 0px 0px 30px 0px !important;
+}
+.form-control,
+.input-group {
+    height: 40px;
+}
+.form-group {
+    margin-bottom: 0px !important;
+}
+.login-title {
+    padding: 20px 10px;
+    background-color: rgba(0, 0, 0, .6);
+}
+.login-title h1 {
+    margin-top: 10px !important;
+}
+.login-title small {
+    color: #666666;
+    font-size: 20px;
+}
+.link p {
+    line-height: 20px;
+    margin-top: 30px;
+}
+.btn-sm {
+    padding: 8px 24px !important;
+    font-size: 16px !important;
+}
+.box .login-box .login-title{
+    background-color: #eaedf1;
+}
+.box .login-box .login-content{
+    background-color: #fff;
+}
+.box .login-box{
+    width: 300px;
+    height: 530px;
+    background-color: #fff;
+    border: solid 1px #8a8a8a;
+    border-radius: 9px;
+    box-shadow: 10px 10px 40px #888888;
+    margin-top: -275px;
+}
+/*返回顶部*/
+div.go-top {
+    display: none;
+    opacity: 0.6;
+    z-index: 999999;
+    position: fixed;
+    bottom: 113px;
+    left: 90%;
+    margin-left: 40px;
+    cursor: pointer;
+}
+div.go-top:hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

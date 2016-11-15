@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人界面</title>
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/homepage.css">
+
+</head>
+<body>
+
+<% include header.ejs %>
+
+<div class="container">
+    <!--我的信息-->
+
+    <div class="my_information">
+        <a href="#">
+            <img class="my_photo" src="/images/homepage/my_photo.png" alt="">
+        </a>
+
+        <div class="my_all">
+            <div class="my_button">
+                <input id="edit" name="submit" type="image" value="ee" src="/images/homepage/my_pen.png"/>
+                <!--<a id="edit" href="#">编辑</a>-->
+            </div>
+
+
+            <div class="my_state_all">
+                <div class="my_name" id="theUsername">姓名:<%= theUser.username %></div>
+                <div class="my_state">
+                    <a href="#">
+                        <img src="/images/homepage/my_state.png" alt=""/>
+                    </a>
+                </div>
+
+                <div class="my_location">
+                    <img src="/images/homepage/my_location.png" alt=""/>
+                    黑龙江大学
+                </div>
+
+            </div>
+
+            <div class="my_text">
+                <p class="my_textarea" rows="10" cols="30" id="intro">
+                    This example cannot be edited because our editor uses a textarea for input, and your browser does
+                    not allow a textarea inside a textarea.and your browser does not allow a textarea inside a
+                    textarea.and your browser does not allow a textarea inside a textarea.
+                </p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!--侧边栏-->
+    <% include sidebar.ejs %>
+
+    <!--我的文章-->
+
+    <div id="my_article">
+        <div class="last_creative">最新创意</div>
+
+
+        <div id="creative_box">
+
+        </div>
+
+
+        <!--分页-->
+        <div class="ul-pagination">
+            <ul class="pagination" id="uList">
+
+            </ul>
+        </div>
+
+
+    </div>
+
+    <!--主页留言-->
+
+    <div class="ck-comment">
+        <div class="content clearfix">
+            <h3>留言板<span class="badge" style="font-size: 15px;margin-left: 10px;" id="messsageCount"></span></h3>
+
+            <div id="comment_box">
+
+            </div>
+
+            <div class="showMore"><a href="javascript:void(0);" class="comment-more">
+                    <img src="/images/common/arrow_down.png">
+                </a></div>
+        </div>
+    </div>
+
+    <!--给我留言-->
+    <% include write_comment.ejs %>
+
+</div>
+<script src="/js/jquery-1.12.3.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script>
+    var theusername_ = "<%=theUser.username%>";
+    var pageindex = 1;
+    var loadComment = function (theusername, pageindex) {
+        $.get('/users/selectMessage', {
+            "theUserName": theusername || theusername_,
+            "pageindex": pageindex || 0
+        }, function (data) {
+
+            var comments = new Array();
+            for (var i in data) {
+
+                var commentObj = data[i];
+                var item = new Array();
+
+                item.push('<div class="comment">');
+                item.push('<img src="/images/demo/demo_header_01.png" >');
+                item.push('<div class="nameAndState clearfix">');
+                item.push('<div class="comment-new-reply"><img src="/images/common/circle_new.png"></div>');
+                item.push('<h4>' );
+                item.push('<a href="/users/visitUser?userid=' + commentObj.user_id + '" >'+ commentObj.sender + '</a>');
+                item.push('</h4>');
+                item.push('<span class="comment-date">' + commentObj.add_time + '</span>');
+                item.push('<a href="#" class="comment-reply">回 复</a>');
+                item.push('</div>');
+                item.push('<p>' + commentObj.content + '</p>');
+                item.push('</div>');
+
+                comments.push(item.join(""));
+
+            }
+            $("#comment_box").append(comments.join(""));
+
+        }, "json")
+
+    }
+    loadComment();
+    $(".showMore").click(function () {
+        loadComment(theusername_, pageindex++);
+    })
+</script>
+<script>
+    var username = window.loginUser_name = "<%=loginUsers.username%>";
+    if (username && username.length > 0) {
+        $("#loginname").text(username);
+        $("#hi").text("你好!");
+    }else{
+        $("#hide").hide();
+
+    }
+    window.validUserLogin = function () {
+        return window.loginUser_name && window.loginUser_name != '' && window.loginUser_name.length > 0;
+
+    }
+    $("*[myrole=loginuser]").click(function (e) {
+        if (!window.validUserLogin()) {
+            e.stopPropagation && e.stopPropagation() || e.preventDefault && e.preventDefault();
+            $("#login").modal("show");
+        }
+    })
+    $('a[name=comments]').click(function (e) {
+        if (!window.validUserLogin()) {
+            e.stopPropagation && e.stopPropagation() || e.preventDefault && e.preventDefault();
+            $("#login").modal("show");
+
+        }
+        else {
+            $.ajax({
+                "url": "/users/giveMessage",
+                "type": "post",
+                "data": {
+                    "comment": $("#words").val(),
+                    "theUserName": "<%= theUser.username %>",
+                    "theLoginName": "<%=loginUsers.username%>"
+                },
+                "dataType": "json",
+                "success": function (data) {
+                    $("#words").val('');
+                    window.alert("评论成功!");
+                    var item = new Array();
+                    item.push('<div class="comment">');
+                    item.push('<img src="/images/demo/demo_header_01.png" >');
+                    item.push('<div class="nameAndState clearfix">');
+                    item.push('<div class="comment-new-reply"><img src="/images/common/circle_new.png"></div>');
+                    item.push('<h4>' + data.sender + '</h4>');
+                    item.push('<span class="comment-date">' + data.add_time + '</span>');
+                    item.push('<a href="#" class="comment-reply">回 复</a>');
+                    item.push('</div>');
+                    item.push('<p>' + data.content + '</p>');
+                    item.push('</div>');
+                    $("#comment_box").before(item.join(""));
+                }
+            })
+        }
+    });
+
+</script>
+<script>
+    var count = 1
+    $(".article-buttom").hide();
+    $(".my_readmore").click(function () {
+        if (count == 1) {
+            $(this).animate({height: "800px"});
+            $(".article-buttom").show(1000);
+            $(".my_readmore_a").text('read less');
+            count++;
+        } else {
+            $(this).animate({height: "320px"});
+            $(".article-buttom").hide(1000);
+            $(".my_readmore_a").text('read more');
+            count--;
+        }
+    });
+</script>
+<script>
+    var statu = 0;
+    var loginid= "<%=loginUsers.user_id%>";
+    var theNowid="<%=theUser.user_id%>";
+
+    if(loginid==theNowid){
+
+    var edit = document.getElementById('edit');
+    var item = document.getElementsByClassName('my_textarea')[0];
+    edit.onclick = function () {
+        if (statu == 0) {
+            item.innerHTML = '<textarea id="item_input"></textarea>';
+            statu = 1;
+        }
+        else {
+            var item_input = document.getElementById('item_input').value;
+            item.innerHTML = item_input;
+            statu = 0;
+        }
+        return false;
+    }}
+    else{
+        $("#edit").hide();
+    }
+
+</script>
+<script src="/js/showMore.js"></script>
+
+<!--最新创意Ajax-->
+<script>
+    var theuserid_ = "<%=theUser.user_id%>";
+    var pageCreative = 1;
+    var loadCreative = function (theuserid, pageCreative) {
+        $.get('/users/selectCreative', {
+            "theUserId": theuserid || theuserid_,
+            "pageCreative": pageCreative || 0
+        }, function (data) {
+            var creatives = new Array();
+            for (var i in data) {
+                var creativeObj = data[i];
+                var item = new Array();
+                item.push('<div class="creative_one">');
+                item.push('        <img src="/images/homepage/creative_one.png" >');
+                item.push('        <div class="creative_all">');
+                item.push('        <span class="creative_data">' + creativeObj.add_time + '</span>');
+                item.push('<a href="/users/visitCreative?articleId=' + creativeObj.article_id + '" >');
+                item.push('<p class="creative_name">' + creativeObj.title + '</p>');
+                item.push('</a>');
+                item.push('</div>');
+                item.push('</div>');
+
+
+                creatives.push(item.join(""));
+            }
+            $("#creative_box").append(creatives.join(""))
+        }, "json")
+    }
+    loadCreative();
+</script>
+<!--分页操作-->
+<script>
+    var userId="<%=theUser.user_id%>";
+    $.get("/users/getArticleCount",{userId:userId},function(result){
+        var amount=parseInt(result[0]['count(*)']);
+        console.log(amount);
+        pageamount=Math.ceil(amount/4);
+        console.log(pageamount);
+        var item=new Array();
+ //       item.push(' <li><a href="#">&laquo;</a></li>');
+//        item.push('<li class="active"><a href="javascript:void(0);">1</a></li>');
+        for(var i=1;i<pageamount+1;i++){
+        item.push('<li><a href="javascript:void(0);">'+i+'</a></li>');
+        }
+
+ //       item.push('<li><a href="#">&raquo;</a></li>');
+        $("#uList").append(item.join(''));
+        //$("#uList li:first").addClass("active");
+
+        $('#uList li').click(function(){
+            var pageCreative=$(this).index();
+            $("#creative_box").html("");
+            loadCreative(theuserid_, pageCreative);
+        })
+    })
+
+
+</script>
+<script>
+$(document).ready(function(){
+    $("#words").focus(function(){
+        $("#words").val('');
+    });
+    $("#words").blur(function(){
+        $("#words").val('Your comments*');
+    });
+});
+</script>
+   <!--个人简介信息操作-->
+<script>
+    $("#intro").change(function(){
+
+        $.get("/users/updateIntro",{intro:$("#item_input").val(),userid:theuserid_},function(data){
+
+        })
+    })
+</script>
+<!--加载个性签名-->
+<script>
+    $.get('/users/getHomepageIntro',{userId:userId},function(data){
+                var objIntro=data[0].intro
+
+                $(".my_textarea").text(objIntro);
+    },"json"
+    )
+    $.get('/users/getMessageCount',{username:theusername_},function(data){
+            var messageCount=data[0]['count(*)'];
+            $("#messsageCount").text(messageCount);
+    })
+
+</script>
+</body>
+</html>

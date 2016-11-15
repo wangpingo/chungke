@@ -1,0 +1,331 @@
+
+<!--导航-->
+<div class="modal-dialog">
+    <div class="modal-content">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid text-center">
+                <!-- 屏幕小到一定的尺寸时候导航栏发生的变化 -->
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" data-target="#navigation-list" data-toggle="collapse" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a><img src="/images/common/logo.png" alt=""></a>
+                </div>
+                <!-- 正常尺寸下的导航拦 -->
+                <div class="collapse navbar-collapse" id="navigation-list">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/users/">创意文化</a></li>
+                        <li><a href="#">技术沙龙<img src="/images/common/hot.png" alt=""/></a></li>
+                        <li><a href="#">成果展示</a></li>
+                        <li><a href="#">团队寻找</a></li>
+                        <li><a href="#">就业信息</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                    <div class="navbar-right">
+                        <ul class="nav navbar-nav register">
+                            <li id="loginname"><a data-toggle="modal" data-target="#register" >注册</a></li>
+                            <li id="hi"><a data-toggle="modal" data-target="#login" >登录</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!--登录-->
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="box">
+        <div class="login-box" style="height: 460px;margin-top: -230px;">
+            <div class="login-title text-center">
+                <h1><small>
+                    用户登录
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                </small></h1>
+            </div>
+            <div class="login-content ">
+                <div class="form">
+                    <form action="/users/userLogin" method="post">
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                    <input type="text" id="login-username" name="username" class="form-control" placeholder="用户名">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input type="text" id="login-password" name="password" class="form-control" placeholder="密码">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span><img src="/images/common/authCode.png" alt=""></span></span>
+                                    <input type="text" id="login-captcha" name="captcha" class="form-control" placeholder="验证码">
+                                    <span class="input-group-addon"><span>验证码</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-sm btn-info " style="width: 100%;">
+                                    登录
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-4 link">
+                                <p class="text-center remove-margin">
+                                    <!--<a href="javascript:void(0)" ><small>找回</small></a>-->
+                                </p>
+                            </div>
+                            <div class="col-xs-4 link">
+                                <p class="text-center remove-margin"><a data-toggle="modal"  data-dismiss="modal" aria-hidden="true" data-target="#register" >
+                                    <small>没有帐号?</small></a>
+                                </p>
+                            </div>
+                            <div class="col-xs-4 link">
+                                <p class="text-center remove-margin"><a data-toggle="modal"  data-dismiss="modal" aria-hidden="true" data-target="#forgetPassword" >
+                                    <small>忘记密码?</small></a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--注册-->
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="box">
+        <div class="login-box">
+            <div class="login-title text-center">
+                <h1><small>
+                    用户注册
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                </small></h1>
+            </div>
+            <div class="login-content ">
+                <div class="form">
+                    <form action="/users/regist" method="post">
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    <input type="text" id="rusername" name="username" class="form-control" placeholder="用户名">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                    <input type="text" id="rphone" name="phone" class="form-control" placeholder="手机号">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input type="text" id="rpassword" name="password" class="form-control" placeholder="密码">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span><img src="/images/common/authCode.png" alt=""></span></span>
+                                    <input type="text" id="captcha" name="captcha" class="form-control" placeholder="验证码">
+                                    <span class="input-group-addon"><span>验证码</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-sm btn-info " style="width: 100%;">
+                                    注册
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6 link">
+                                <p class="text-center remove-margin">
+                                    <!--<a href="javascript:void(0)" ><small>找回</small></a>-->
+                                </p>
+                            </div>
+                            <div class="col-xs-6 link">
+                                <p class="text-center remove-margin">
+                                    <a data-toggle="modal"  data-dismiss="modal" aria-hidden="true" data-target="#login" >
+                                        <small>已有帐号?</small>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--重置密码-->
+<div class="modal fade" id="resetPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="box">
+        <div class="login-box" style="height: 430px;margin-top: -215px;">
+            <div class="login-title text-center">
+                <h1><small>
+                    <button type="button" class="close glyphicon glyphicon-chevron-left" data-dismiss="modal"
+                            aria-hidden="true" data-toggle="modal" data-target="#login" style="font-size: 14px;float: left;line-height: 20px">
+                    </button>
+                    重置密码
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                </small></h1>
+            </div>
+            <div class="login-content ">
+                <div class="form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                    <input type="text"  name="username" class="form-control" placeholder="手机号">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                                    <input type="text"  name="password" class="form-control" placeholder="密码">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span><img src="/images/common/authCode.png" alt=""></span></span>
+                                    <input type="text"  name="captcha" class="form-control" placeholder="短信验证码">
+                                    <span class="input-group-addon"><span>重发</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12  ">
+                                <button id="submit-reset" type="submit" class="btn btn-sm btn-info" data-dismiss="modal"
+                                        aria-hidden="true" style="width: 100%;">
+                                    重置密码
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--忘记密码-->
+<div class="modal fade" id="forgetPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="box">
+        <div class="login-box" style="height: 430px;margin-top: -215px;">
+            <div class="login-title text-center">
+                <h1><small>
+                    <button type="button" class="close glyphicon glyphicon-chevron-left" data-dismiss="modal"
+                            aria-hidden="true" data-toggle="modal" data-target="#login" style="font-size: 14px;float: left;line-height: 20px">
+                    </button>
+                    忘记密码
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                </small></h1>
+            </div>
+            <div class="login-content ">
+                <div class="form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    <input type="text"  name="name" class="form-control" onblur="checkUsername()" placeholder="用户名">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                                    <input type="text"  name="username" class="form-control" placeholder="手机号">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12  ">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><span><img src="/images/common/authCode.png" alt=""></span></span>
+                                    <input type="text"  name="captcha" class="form-control" placeholder="验证码">
+                                    <span class="input-group-addon"><span>验证码</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-actions">
+                            <div class="col-xs-12 ">
+                                <button type="submit" class="btn btn-sm btn-info" data-dismiss="modal"
+                                        aria-hidden="true" data-toggle="modal" data-target="#resetPassword" style="width: 100%;">
+                                    获取短信验证码
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!--成功&失败提示-->
+<div>
+
+    <!--提示密码重置成功-->
+    <div id="successAlert" class="alert alert-success" style="display: none;position:fixed;width:100%;">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong style="font-size: 16px">密码重置成功!</strong>
+    </div>
+
+    <!--提示密码重置失败-->
+    <div id="failAlert" class="alert alert-danger" style="display: none;position:fixed;width:100%;">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong style="font-size: 16px">密码重置失败!</strong>
+    </div>
+
+</div>
+<script>
+
+</script>

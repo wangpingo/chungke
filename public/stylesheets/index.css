@@ -1,0 +1,377 @@
+*{/*去除所有元素的内外边距*/
+	margin: 0;
+	padding: 0;
+
+}
+a{/*去除所有链接的下划线*/
+	text-decoration: none;
+	
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:active {
+	text-decoration: none;
+}
+ul,ol{/*去除列表的样式*/
+	list-style: none;
+}
+img{/*防止图片放置在a中时IE中会出现多余的蓝色边框*/
+	border: 0;
+}
+
+body{
+	/*width: 1500px;*/
+	color: black;
+	font: 12px/1.8 Tahoma,Verdana,Arial,微软雅黑;
+}
+
+#idx-container{
+	width: 100%;
+	
+}
+.wrapper{
+	width: 1160px;
+	margin: 0 auto;
+}
+/**********************idx-top******************************/
+/*#idx-top{*/
+	/*height: 60px;*/
+	/*background-color: black;*/
+/*}*/
+
+/**********************idx-banner******************************/
+#idx-banner{
+	width: 100%;
+	height: 178px;
+	background-color: blue;
+	margin-bottom: 64px;
+	position: relative;
+}
+#idx-banner img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	cursor: pointer;
+}
+#idx-banner .idx-selected{
+	display: block;
+}
+#banner-img1{
+	background-color: rgb(51,165,222);
+	z-index:2;
+}
+#banner-img2{
+	background-color: green;
+}
+#banner-img3{
+	background-color: blue;
+}
+#idx-banner .bannertitle{
+	position: absolute;
+	top: 42px;
+	left: 22px;
+	font-size: 26px;
+	color: #fff;
+	font-family: 微软雅黑;
+	text-shadow:0 1px 0 #222;
+	z-index: 9999;
+}
+.bannertitlenone{
+	display: none; 
+}
+#banner-btn{
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	top: 90px;
+	left: 42px;
+	text-align: center;
+	font-size: 14px;
+	line-height: 40px;
+	color: #fff;
+	background-color: transparent;
+	opacity: 0.9;
+	border-radius: 36px;
+	border: solid 2px #fff;
+	cursor: pointer; 
+	z-index: 9999; 
+}
+
+#images-list{
+	bottom: 16px;
+	left: 54px;
+	position: absolute;
+	width: 60px;
+	height: 10px;
+	cursor: pointer;
+	z-index: 9999;
+}
+.img-list{
+	float: left;
+	border-radius: 36px;
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	opacity: 0.3;
+	margin-right: 10px;
+}
+.list-selected{
+	opacity: 0.9;
+}
+/**********************idx-content******************************/
+#idx-content{
+	height: 1000px;
+}
+#idx-content-left,#idx-content-center,#idx-content-right{
+	float: left;
+}
+#idx-content-left{
+	width: 180px;
+	height: 564px;
+	/*margin-right: 3%;*/
+	background-color: #fff;
+}
+#member{
+	height: 536px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+#member-scroll{
+	height: 536px;
+	width: 10px;
+	position: absolute;
+	left: 0;
+}
+#member-scroll-bar{
+	width: 10px;
+	position: absolute;
+	background-color: rgb(237,237,237);
+	border-radius: 3px;
+	cursor: pointer;
+}
+#member-num{
+	height: 28px;
+	width: 180px;
+	text-align: center;
+	line-height: 28px;
+	color: rgb(160,160,160);
+	background-color: rgb(237,237,237);
+}
+
+#member-list{
+	padding-left: 16px;
+	height: 1100px;
+}
+#member-list ul{
+	position: absolute;
+}
+#member-list li{
+	float: left;
+	margin-right: 6px;
+	width: 46px;
+	height: 62px;
+	cursor: pointer;
+}
+#member-list li>img{
+	height: 44px;
+	width: 44px;
+	margin: 0 auto;
+	border-radius: 5px;
+	float: left;
+}
+#member-list li>span{
+	float: left;
+	height: 16px;
+	width: 100%;
+	line-height: 16px;
+	text-align: center;
+}
+
+#idx-content-center{
+	padding-left: 3%;
+	width: 60%;
+	height: 594px;
+	margin-right: 4%;
+
+}
+
+#idx-content-center .idx-content-cen{
+	width: 100%;
+	height: 276px;
+	border-bottom: 2px solid rgb(237,237,237);
+	margin-top: 40px;
+}
+
+
+#idx-content-center .topic{
+	float: left;
+	margin-right: 43px;
+	color: rgb(160,160,160);
+}
+#idx-content-center .description{
+	color: rgb(121,121,121);
+}
+#idx-content-center .topic{
+	width: 190px;
+	height: 190px;
+}
+#idx-content-center .topic span,#idx-content-center .topic img{
+	display: block;
+	cursor: pointer;
+	font-size: 16px;
+	margin-bottom: 16px;
+	line-height: 16px;
+}
+#idx-content-center .lastimage{
+	margin-right: 0;
+}
+
+
+.f-float{
+	width: 190px;
+	height: 564px;
+	float: right;
+}
+.f-fixed{
+	width: 190px;
+	height: 564px;
+	position: fixed;
+	right: 32px;
+	top: 100px;
+}
+
+#navigation{
+	height: 100%;
+	width: 100%;
+	color: rgb(193,193,193);
+	position: relative;
+}
+#navigation li{
+	height: 41px;
+	cursor: pointer;
+	line-height: 41px;
+	padding-left: 40px;
+}
+#navigation-list{
+	height: 250px;
+}
+.nav-pic{
+	height: 17px;
+	width: 16px;
+	position: absolute;
+	left: 14px;
+}
+#nav-draft .nav-pic{
+	top: 12px;
+	background: url(../images/index/nav-pic.png);
+}
+#nav-draft .d2{
+	background: url(../images/index/nav-pic.png)-14px;
+}
+#nav-originality .nav-pic{
+	width: 15px;
+	top: 53px;
+	background: url(../images/index/nav-pic.png)-29px 0;
+}
+#nav-originality .o2{
+	background: url(../images/index/nav-pic.png)-43px 0;
+}
+#nav-attention .nav-pic{
+	top: 94px;
+	background: url(../images/index/nav-pic.png)-58px 0;
+}
+#nav-attention .a2{
+	background: url(../images/index/nav-pic.png)-75px 0;
+}
+#nav-invitation .nav-pic{
+	top: 135px;
+	background: url(../images/index/nav-pic.png)-92px 0;
+}
+#nav-invitation{
+	border-bottom: 1px solid rgb(237,237,237);
+	}
+#nav-invitation .i2{
+	background: url(../images/index/nav-pic.png)-108px 0;
+}
+#nav-orignality-square .nav-pic{
+	top: 178px;
+	background: url(../images/index/nav-pic.png)-124px 0;
+}
+#nav-orignality-square .s2{
+	background: url(../images/index/nav-pic.png)-140px 0;
+}
+#nav-frendship .nav-pic{
+	top: 218px;
+	width: 17px;
+	background: url(../images/index/nav-pic.png)-156px 0;
+}
+#nav-frendship{
+	border-bottom: 1px solid rgb(237,237,237);
+}
+#nav-frendship .f2{
+	background: url(../images/index/nav-pic.png)-174px 0;
+}
+
+#copyright{
+	padding-top: 20px;
+	line-height: 26px;
+}
+/**********************return-top******************************/
+#return-top{
+	width: 56px;
+	height: 56px;
+	position: fixed;
+	right: 40px;
+	bottom: 144px;
+	text-align: center;
+	line-height: 26px;
+	font-size: 18px;
+	z-index: 10000;
+	cursor: pointer;
+	color: rgb(39,38,54);
+}
+#return-top h1{
+	margin: 0 auto;
+	font-size: 40px;
+	line-height: 26px;
+	color: rgb(39,38,54);
+}
+
+
+.image-box {
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+.image-box .image-box-item {
+	width: 220px;
+	height: 300px;
+	float: left;
+}
+.image-box .image-box-item img{
+	padding-left:20px;
+	padding-right:20px;
+}
+.image-box .image-box-item .description{
+	color: rgb(121,121,121);
+	width: 100%;
+	font-size: 20px;
+	left: 20px;
+	position: relative;
+}
+.image-box .image-box-item .category{
+	width: 100%;
+	font-size: 15px;
+	left: 33px;
+	position: relative;
+	top: -2px;
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>cd高科文章上传</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/articlesubmit.css">
+
+</head>
+<body>
+	<div id="articlesub-top" class="wrapper">
+        <!--顶部-->
+        <% include header.ejs %>
+    </div>
+	<div id="articlesub-container" class="wrapper">
+		<form action="">
+			<div id="articlesub-pic">
+				<span id="article-pic-sub"></span>
+			</div>
+			<input type="text" id="articlesub-title" value="请输入文章标题" class="gray" onclick="if(this.value=='请输入文章标题'){this.value='';this.className='black'}" onblur="if(this.value=='') {this.value='请输入文章标题';this.className='gray'}">
+			<div id="articlesub-button"></div>
+			<textarea  id="articlesub-content" class="gray" onclick="if(this.value=='请输入文章内容'){this.value='';this.className='black'}" onblur="if(this.value=='') {this.value='请输入文章内容';this.className='gray'}">请输入文章内容</textarea>
+			<button id="article-submit-btn">上传文章</button><button id="article-draft-btn">保存草稿</button>
+		</form>
+	</div>
+
+    <script src="/js/jquery-1.12.3.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        var username = "<%=loginUsers.username%>";
+        if (username && username.length > 0) {
+            $("#loginname").text(username);
+            $("#hi").text("你好!");
+        }
+    </script>
+</body>
+</html>

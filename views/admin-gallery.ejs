@@ -1,0 +1,237 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ChangKe后台管理系统模板展示列表页面 </title>
+    <meta name="description" content="这是一个 gallery 页面">
+    <meta name="keywords" content="gallery">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+    以获得更好的体验！</p>
+<![endif]-->
+
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand">
+        <strong>Amaze</strong>
+        <small>后台管理模板</small>
+    </div>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+                class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+            <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span
+                            class="am-badge am-badge-warning">5</span></a></li>
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
+                    <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
+                    <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span
+                            class="admin-fullText">开启全屏</span></a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar">
+        <ul class="am-list admin-sidebar-list">
+            <li><a href="admin-index"><span class="am-icon-home"></span> 首页</a></li>
+            <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块
+                    <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+                <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
+                    <li><a href="admin-user" class="am-cf"><span class="am-icon-check"></span> 个人资料<span
+                                    class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+                    <li><a href="admin-help"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
+                    <li><a href="admin-gallery"><span class="am-icon-th"></span> 相册页面<span
+                                    class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>
+                    <li><a href="admin-log"><span class="am-icon-calendar"></span> 系统日志</a></li>
+                    <li><a href="admin-404"><span class="am-icon-bug"></span> 404</a></li>
+                </ul>
+            </li>
+            <li><a href="admin-table"><span class="am-icon-table"></span> 表格</a></li>
+            <li><a href="admin-form"><span class="am-icon-pencil-square-o"></span> 表单</a></li>
+
+            <!--<li><a class="am-cf" data-am-collapse="{target: '#collapse-navs'}"><span class="am-icon-pencil-square-o"></span> 表单-->
+                    <!--<span class="am-icon-angle-right am-fr am-margin-right"></span></a>-->
+
+                <!--<ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-navs">-->
+                    <!--<li><a href="admin-form#tab1" class="am-cf"><span class="am-icon-check"></span> 添加管理员<span-->
+                                    <!--</span></a></li>-->
+                    <!--<li><a href="admin-form#tab2"><span class="am-icon-puzzle-piece"></span> 添加文章</a></li>-->
+                    <!--<li><a href="admin-form#tab3"><span class="am-icon-th"></span> 添加用户<span-->
+                                    <!--class="am-badge am-badge-secondary am-margin-right am-fr"></span></a></li>-->
+
+                <!--</ul>-->
+
+            <!--</li>-->
+
+            <li><a href="#"><span class="am-icon-sign-out"></span> 注销</a></li>
+        </ul>
+
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-bookmark"></span> 公告</p>
+
+                <p>时光静好，与君语；细水流年，与君同。—— Chuang Ke</p>
+            </div>
+        </div>
+
+        <div class="am-panel am-panel-default admin-sidebar-panel">
+            <div class="am-panel-bd">
+                <p><span class="am-icon-tag"></span> wiki</p>
+
+                <p>Welcome to the Chuang ke!</p>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar end -->
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="am-cf am-padding">
+            <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">相册</strong> /
+                <small>Gallery</small>
+            </div>
+        </div>
+        <ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
+
+        </ul>
+
+        <div class="am-margin am-cf">
+            <hr/>
+            <p class="am-fl" id="length">共 15 条记录</p>
+            <ol class="am-pagination am-fr" id="list">
+                <li class="am-disabled"><a href="#">&laquo;</a></li>
+                <li class="am-active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>
+            </ol>
+            <p class="am-fl"></p>
+        </div>
+
+
+    </div>
+    <!-- content end -->
+
+</div>
+
+<footer>
+    <hr>
+    <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license. <a href="http://www.mycodes.net/"
+                                                                                       target="_blank">源码之家</a></p>
+</footer>
+
+<!--[if lt IE 9]>
+<script src="/assets/js/jquery1.11.1.min.js"></script>
+<script src="/assets/js/modernizr.js"></script>
+<script src="/assets/js/polyfill/rem.min.js"></script>
+<script src="/assets/js/polyfill/respond.min.js"></script>
+<script src="/assets/js/amazeui.legacy.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="/assets/js/app.js"></script>
+
+<!--</script>-->
+<script>
+    $.get("/admins/getImageCount",function(result){
+
+        var amount=parseInt(result[0]['count(*)']);
+
+        console.log('amount',amount);
+        pageamount=Math.ceil(amount/6);
+        console.log(pageamount);
+        $("#length").text("共 "+amount+ "张照片");
+        $('#list').html('');
+        for (var i=0;i<pageamount;i++){
+        var j=i+1;
+            $("#list").append("<li><a href='javascript:void(0);'>" + j + "</a></li>")
+        }
+        $("#list li:first").addClass("active");
+        $("#list li").click(function(){
+            var pages=$(this).index();
+            console.log(pages);
+            getPage(pages);
+            $(this).addClass("active").siblings().removeClass("active");
+        })
+    })
+
+</script>
+
+
+<script>
+   $('.gallery-list').on( "click", "li", function() {
+       var li=$('.gallery-list li');
+       if(confirm("确定要删除照片吗？")){
+           /*console.log('imagesrc',li.find('img').attr('src'));
+           return false;*/
+           $.post('/admins/deleteActileImg', {img_src:li.find('img').attr('src')},function(data){
+               window.location.reload();//删除后，自动刷新页面
+           })
+       }
+
+    });
+</script>
+<script>
+    var $galleryList = $(".gallery-list");
+    //得到模板函数
+    getPage(0);
+    function getPage(pages){
+        //将现在页面清除
+        $(".gallery-list").html("");
+        console.log("这是pages"+pages);
+        $.ajax({
+            "url":"/admins/getAllimages?page="+pages,
+            "type":"get",
+            "dataType":"json",
+            "success":function(data){
+                var lis=new Array();
+                for(var i in data){
+
+                  var d=data[i];
+                  var li=$("<li>");
+                  var a=$("<a>");
+                  var img=$("<img>",{src:"/images/"+ d.img,class:"am-img-thumbnail am-img-bdrs"});
+                  var titile=$("<div>", {class: "gallery-title"}).text(d.title);
+                    var time = $("<div>", {class: "gallery-desc"}).text(d.add_time.toLocaleString());
+                    li.append(a);
+                    a.append(img);
+                    a.append(titile);
+                    a.append(time);
+                    lis.push(li);
+                }
+                $galleryList.append(lis);
+            }
+        })
+    }
+</script>
+</body>
+</html>
